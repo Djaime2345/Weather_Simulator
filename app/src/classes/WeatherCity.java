@@ -6,15 +6,16 @@ import exceptions.InvalidTemperatureException;
 import exceptions.InvalidWeatherException;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class WeatherCity{
     private City city;
     private double temperature;
     private double humidity;
     private WeatherType weatherType;
-    private LocalDate date;
+    private Date date;
 
-    public WeatherCity(City city, double temperature, double humidity, WeatherType weatherType, LocalDate date) {
+    public WeatherCity(City city, double temperature, double humidity, String weatherType, Date date) {
         this.city = city;
         setTemperature(temperature);
         setHumidity(humidity);
@@ -22,8 +23,8 @@ public class WeatherCity{
         setDate(date);
     }
 
-    public WeatherCity(City city, double temperature, double humidity, WeatherType weatherType) {
-        new WeatherCity(city, temperature, humidity, weatherType, LocalDate.now());
+    public WeatherCity(City city, double temperature, double humidity, String weatherType) {
+        new WeatherCity(city, temperature, humidity, weatherType, null);
     }
 
     public City getCity() {
@@ -61,22 +62,18 @@ public class WeatherCity{
         return weatherType;
     }
 
-    public void setWeatherType(WeatherType weatherType) {
-        if (existWeatherType(weatherType.name())){
-            this.weatherType = weatherType;
+    public void setWeatherType(String weatherType) {
+        if (existWeatherType(weatherType)){
+            this.weatherType = WeatherType.valueOf(weatherType);
         }
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) throws InvalidDateException{
-        if (date.isAfter(LocalDate.MAX) || (date.isBefore(LocalDate.MIN))){
-            throw new InvalidDateException("The date is not valid");
-        } else {
-            this.date = date;
-        }
+    public void setDate(Date date){
+        this.date = date;
     }
 
     private Boolean existWeatherType(String weather){
@@ -89,7 +86,7 @@ public class WeatherCity{
     }
 
     public void displayDetails(){
-        System.out.println("\t > Weather Display: \n");
+        System.out.println("\n\t > Weather Display:");
         System.out.println("\t - Temperature: " + this.temperature);
         System.out.println("\t - Humidity: " + this.humidity);
         System.out.println("\t - Type: " + this.weatherType.name());

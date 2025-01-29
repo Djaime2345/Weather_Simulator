@@ -5,8 +5,8 @@ public class Country {
     protected String continent;
 
     public Country(String country_name, String continent) {
-        this.country_name = country_name;
-        this.continent = continent;
+        this.setCountry_name(country_name);
+        this.setContinent(continent);
     }
 
     public Country (){
@@ -19,7 +19,11 @@ public class Country {
     }
 
     public void setContinent(String continent) {
-        this.continent = continent;
+        if (continent.matches(".*\\d.*")){
+            throw new IllegalArgumentException("The continent must not contain numbers");
+        } else {
+            this.continent = continent;
+        }
     }
 
     public String getCountry_name() {
@@ -27,11 +31,15 @@ public class Country {
     }
 
     public void setCountry_name(String country_name) {
-        this.country_name = country_name;
+        if (country_name.matches(".*\\d.*")){
+            throw new IllegalArgumentException("The country must not contain numbers");
+        } else {
+            this.country_name = country_name;
+        }
     }
 
     public void displayDetails(){
-        System.out.println("\t > Country: \n");
+        System.out.println("\n\t > Country: ");
         System.out.println("\t - Name: " + this.country_name);
         System.out.println("\t - Continent: " + this.continent);
     }

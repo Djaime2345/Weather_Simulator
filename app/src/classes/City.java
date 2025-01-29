@@ -8,7 +8,7 @@ public class City extends Country{
 
     public City(String name, String country_name, String continent, int population) {
         super(country_name, continent);
-        this.name = name;
+        this.setName(name);
         this.setPopulation(population);
     }
 
@@ -48,7 +48,7 @@ public class City extends Country{
 
     public void displayDetails(){
         super.displayDetails();
-        System.out.println("\t > City Display: \n");
+        System.out.println("\n\t > City Display:");
         System.out.println("\t - Name: " + this.name);
         System.out.println("\t - Population: " + this.population);
     }
