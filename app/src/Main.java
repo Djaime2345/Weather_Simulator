@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         Scanner sc = new Scanner(System.in);
         Boolean go = true;
 
@@ -56,26 +56,22 @@ public class Main {
                     manager.getCurrentCities();
                     break;
                 case 3:
-                    try {
-                        System.out.println("For what city do you want to add a weather?");
-                        manager.getCurrentCities();
-                        city_name = sc.next();
-                        City city_to_add = manager.getCity(city_name);
-                        System.out.println("Please add the information for the weather");
-                        System.out.println("Temperature (Celsius)");
-                        temperature = sc.nextDouble();
-                        System.out.println("Humidity");
-                        humidity = sc.nextDouble();
-                        System.out.println("Type of weather");
-                        type = sc.next().toUpperCase();
-                        System.out.println("Date (yyyy-MM-dd)");
-                        dateOnString = sc.next();
-                        date = dateFormat.parse(dateOnString);
-                        WeatherCity addedWeather = new WeatherCity(city_to_add, temperature, humidity, type, date);
-                        manager.addWeather(addedWeather);
-                    } catch (Exception e){
-                        System.out.println(e.getMessage());
-                    }
+                    System.out.println("For what city do you want to add a weather?");
+                    manager.getCurrentCities();
+                    city_name = sc.next();
+                    City city_to_add = manager.getCity(city_name);
+                    System.out.println("Please add the information for the weather");
+                    System.out.println("Temperature (Celsius)");
+                    temperature = sc.nextDouble();
+                    System.out.println("Humidity");
+                    humidity = sc.nextDouble();
+                    System.out.println("Type of weather");
+                    type = sc.next().toUpperCase();
+                    System.out.println("Date (yyyy-MM-dd)");
+                    dateOnString = sc.next();
+                    date = dateFormat.parse(dateOnString);
+                    WeatherCity addedWeather = new WeatherCity(city_to_add, temperature, humidity, type, date);
+                    manager.addWeather(addedWeather);
                     break;
                 case 4:
                     System.out.println("For what city do you want to search the weather?");
