@@ -1,10 +1,10 @@
 package classes;
 
 public enum WeatherType{
-    SUNNY,
-    WINDY,
-    RAINY,
-    CLOUDY,
-    SNOWY,
-    STORMY,
+    Sunny,
+    Windy,
+    Rainy,
+    Cloudy,
+    Snowy,
+    Stormy,
 }

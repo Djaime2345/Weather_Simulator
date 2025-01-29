@@ -1,5 +1,7 @@
 package classes;
 
+import exceptions.InvalidPopulationException;
+
 /**
  *
  */
@@ -18,7 +20,7 @@ public class City {
     public City(String name, String country, int population) {
         this.name = name;
         this.country = country;
-        this.population = population;
+        this.setPopulation(population);
     }
 
     public City() {
@@ -72,7 +74,18 @@ public class City {
      *
      * @param population
      */
-    public void setPopulation(int population) {
-        this.population = population;
+    public void setPopulation(int population) throws InvalidPopulationException{
+        if (population < 0){
+            throw new InvalidPopulationException("You cannot add negative population to a city!!");
+        } else{
+            this.population = population;
+        }
+    }
+
+    public void displayDetails(){
+        System.out.println("\t > City Display: \n");
+        System.out.println("\t - Name: " + this.name);
+        System.out.println("\t - Country: " + this.country);
+        System.out.println("\t - Population: " + this.population);
     }
 }
