@@ -7,7 +7,8 @@ import exceptions.InvalidWeatherException;
 
 import java.time.LocalDate;
 
-public class WeatherCity extends City{
+public class WeatherCity{
+    private City city;
     private double temperature;
     private double humidity;
     private WeatherType weatherType;
@@ -21,7 +22,7 @@ public class WeatherCity extends City{
      * @param weatherType
      */
     public WeatherCity(City city, double temperature, double humidity, WeatherType weatherType, LocalDate date) {
-        super(city.getName(), city.getCountry(), city.getPopulation());
+        this.city = city;
         setTemperature(temperature);
         setHumidity(humidity);
         setWeatherType(weatherType);
@@ -93,7 +94,6 @@ public class WeatherCity extends City{
         }
     }
 
-    @Override
     public void displayDetails(){
         System.out.println("\t > Weather Display: \n");
         System.out.println("\t - Temperature: " + this.temperature);
