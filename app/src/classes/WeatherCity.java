@@ -14,13 +14,6 @@ public class WeatherCity{
     private WeatherType weatherType;
     private LocalDate date;
 
-    /**
-     *
-     * @param city
-     * @param temperature
-     * @param humidity
-     * @param weatherType
-     */
     public WeatherCity(City city, double temperature, double humidity, WeatherType weatherType, LocalDate date) {
         this.city = city;
         setTemperature(temperature);
@@ -29,15 +22,16 @@ public class WeatherCity{
         setDate(date);
     }
 
-    /**
-     *
-     * @param city
-     * @param temperature
-     * @param humidity
-     * @param weatherType
-     */
     public WeatherCity(City city, double temperature, double humidity, WeatherType weatherType) {
         new WeatherCity(city, temperature, humidity, weatherType, LocalDate.now());
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 
     public double getTemperature() {
