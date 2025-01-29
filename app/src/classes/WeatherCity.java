@@ -92,4 +92,13 @@ public class WeatherCity extends City{
             return false;
         }
     }
+
+    @Override
+    public void displayDetails(){
+        System.out.println("\t > Weather Display: \n");
+        System.out.println("\t - Temperature: " + this.temperature);
+        System.out.println("\t - Humidity: " + this.humidity);
+        System.out.println("\t - Type: " + this.weatherType.name());
+        System.out.println("\t - Date: " + this.date.toString());
+    }
 }
