@@ -1,10 +1,32 @@
 package classes;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class WeatherManager {
+    private HashSet<City> listOfCities = new HashSet<>();
     private HashMap<String, WeatherCity> weatherContainer;
+
+    public void addCity(City city){
+        listOfCities.add(city);
+    }
+
+    public void getCurrentCities(){
+        for (City c: listOfCities){
+            c.displayDetails();
+        }
+    }
+
+    public City getCity(String name){
+        for (City c: listOfCities){
+            if(c.getName().equals(name)){
+                return c;
+            }
+        }
+        return null;
+    }
 
     public void addWeather(WeatherCity weather){
         String key = obtainKey(weather);

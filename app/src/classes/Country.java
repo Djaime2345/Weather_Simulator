@@ -1,16 +1,16 @@
 package classes;
 
 public class Country {
-    private String name;
-    private String continent;
+    protected String country_name;
+    protected String continent;
 
-    public Country(String name, String continent) {
-        this.name = name;
+    public Country(String country_name, String continent) {
+        this.country_name = country_name;
         this.continent = continent;
     }
 
     public Country (){
-        this.name = "Unknown";
+        this.country_name = "Unknown";
         this.continent = "Unknown";
     }
 
@@ -22,17 +22,17 @@ public class Country {
         this.continent = continent;
     }
 
-    public String getName() {
-        return name;
+    public String getCountry_name() {
+        return country_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCountry_name(String country_name) {
+        this.country_name = country_name;
     }
 
     public void displayDetails(){
         System.out.println("\t > Country: \n");
-        System.out.println("\t - Name: " + this.name);
+        System.out.println("\t - Name: " + this.country_name);
         System.out.println("\t - Continent: " + this.continent);
     }
 }

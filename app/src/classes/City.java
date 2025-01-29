@@ -3,8 +3,8 @@ package classes;
 import exceptions.InvalidPopulationException;
 
 public class City extends Country{
-    protected String name;
-    protected int population;
+    private String name;
+    private int population;
 
     public City(String name, String country_name, String continent, int population) {
         super(country_name, continent);
@@ -26,7 +26,12 @@ public class City extends Country{
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (name.matches(".*\\d.*")){
+            throw new IllegalArgumentException("The city must not contain numbers");
+        } else {
+            this.name = name;
+        }
+
     }
 
     public int getPopulation() {
